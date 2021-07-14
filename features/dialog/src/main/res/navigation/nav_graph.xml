@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/oneFragment">
+    <fragment
+        android:id="@+id/oneFragment"
+        android:name="com.gratus.dialog.presentation.OneFragment"
+        android:label="fragment_one"
+        tools:layout="@layout/fragment_one">
+        <action
+            android:id="@+id/action_oneFragment_to_dialogOneFragment"
+            app:destination="@id/dialogOneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/twoFragment"
+        android:name="com.gratus.dialog.presentation.TwoFragment"
+        android:label="fragment_two"
+        tools:layout="@layout/fragment_two">
+        <argument
+            android:name="choices"
+            app:argType="com.gratus.dialog.domain.local.DialogData" />
+        <!--        <argument-->
+        <!--            android:name="choices"-->
+        <!--            app:argType="String" />-->
+    </fragment>
+
+    <dialog
+        android:id="@+id/dialogOneFragment"
+        android:name="com.gratus.dialog.presentation.DialogOneFragment"
+        android:label="fragment_dialog_one">
+        <action
+            android:id="@+id/action_dialogOneFragment_to_dialogTwoFragment"
+            app:destination="@id/dialogTwoFragment"
+            app:popUpTo="@+id/oneFragment" />
+        <argument
+            android:name="choices"
+            app:argType="com.gratus.dialog.domain.local.DialogData" />
+        <!--        <argument-->
+        <!--            android:name="choices"-->
+        <!--            app:argType="String" />-->
+    </dialog>
+    <dialog
+        android:id="@+id/dialogTwoFragment"
+        android:name="com.gratus.dialog.presentation.DialogTwoFragment"
+        android:label="fragment_dialog_two"
+        tools:layout="@layout/fragment_dialog_one">
+        <action
+            android:id="@+id/action_dialogTwoFragment_to_twoFragment"
+            app:destination="@id/twoFragment"
+            app:popUpTo="@+id/oneFragment" />
+        <argument
+            android:name="choices"
+            app:argType="com.gratus.dialog.domain.local.DialogData" />
+        <!--        <argument-->
+        <!--            android:name="choices"-->
+        <!--            app:argType="String" />-->
+    </dialog>
+</navigation>
+

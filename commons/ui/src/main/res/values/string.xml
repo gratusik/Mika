@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mika</string>
+    <string name="task1">Task1</string>
+    <string name="task2">Task2</string>
+    <string name="task4">Task4</string>
+    <string name="dialog1">Dialog1</string>
+    <string name="screen1">Screen1</string>
+    <string name="screen2">Screen2</string>
+    <string name="dialog2">Dialog2</string>
+    <string name="your_choice">Your choice</string>
+    <string name="choice_a">Choice A</string>
+    <string name="choice_b">Choice B</string>
+    <string name="choice_c">Choice C</string>
+    <string name="choice_d">Choice D</string>
+    <string name="dialog_result">Dialog1 result:</string>
+    <string name="screen1_results">Screen1 results:\n</string>
+    <string name="choice_1">Choice1</string>
+    <string name="choice_2">Choice2</string>
+    <string name="screen2_child2">Screen2 Child2</string>
+    <string name="screen2_child1">Screen2 Child1</string>
+    <string name="child2">child2</string>
+    <string name="child1">child1</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="username">username</string>
+    <string name="email">Email</string>
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/second_screen_graph"
+    app:startDestination="@id/childOneFragment">
+    <fragment
+        android:id="@+id/childOneFragment"
+        android:name="com.gratus.conditionalNav.presentation.ChildOneFragment"
+        tools:layout="@layout/fragment_child_one"
+        android:label="fragment_child_one">
+        <action
+            android:id="@+id/action_childOneFragment_to_childTwoFragment"
+            app:destination="@id/childTwoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/childTwoFragment"
+        android:name="com.gratus.conditionalNav.presentation.ChildTwoFragment"
+        tools:layout="@layout/fragment_child_two"
+        android:label="fragment_child_two">
+        <action
+            android:id="@+id/action_childTwoFragment_to_childOneFragment"
+            app:destination="@id/childOneFragment" />
+    </fragment>
+</navigation>
