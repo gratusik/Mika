@@ -2,6 +2,7 @@
 
 The app consists of different tasks implemented with fragments and activity- navigation component and safe args
 - Have modular based architecture with solid principle
+- All the task have been incorporated in one project
 ## Task1
 - Two fragments and one dialog Fragment used to complete the task
 - Custom dialog fragment
