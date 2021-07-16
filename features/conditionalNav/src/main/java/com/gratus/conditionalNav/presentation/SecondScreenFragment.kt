@@ -15,7 +15,9 @@ class SecondScreenFragment :
     private val args: SecondScreenFragmentArgs by navArgs()
 
     override fun onInitViewBinding(savedInstanceState: Bundle?) {
-        setNavigationGraph()
+        if (savedInstanceState == null) {
+            setNavigationGraph()
+        }
     }
 
     private fun setNavigationGraph() {

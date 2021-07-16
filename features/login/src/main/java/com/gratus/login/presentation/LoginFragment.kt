@@ -6,16 +6,22 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.gratus.core.BaseApplication
 import com.gratus.core.util.network.ResourceState
+import com.gratus.login.R
 import com.gratus.login.databinding.FragmentLoginBinding
 import com.gratus.login.di.DaggerLoginComponent
 import com.gratus.ui.base.BaseFragmentViewModel
 
 class LoginFragment :
     BaseFragmentViewModel<FragmentLoginBinding, LoginViewModel>(FragmentLoginBinding::inflate) {
-
+    private var username: String? = null
     override fun onInitViewBinding(savedInstanceState: Bundle?) {
         // get email and password from text input layout
         // with this we can do validation on type using text change listener
+        if (savedInstanceState != null) {
+            if (savedInstanceState.getString(getString(R.string.username)) != null) {
+                setPageVisibility(savedInstanceState.getString(getString(R.string.username))!!)
+            }
+        }
         binding.loginBt.setOnClickListener {
             it.hideKeyboard()
             viewModel.login(binding.email.text.toString(), binding.password.text.toString())
@@ -33,8 +39,7 @@ class LoginFragment :
                     }
                     ResourceState.SUCCESS -> {
                         binding.progressBar.isVisible = false
-                        setPageVisibility()
-                        binding.fullNameView.text = it.data?.fullName
+                        it.data?.fullName?.let { it1 -> setPageVisibility(it1) }
                     }
                     ResourceState.ERROR -> {
                         binding.progressBar.isVisible = false
@@ -88,9 +93,11 @@ class LoginFragment :
                 .get(LoginViewModel::class.java)
     }
 
-    private fun setPageVisibility() {
+    private fun setPageVisibility(user: String) {
+        username = user
         binding.credentialLayout.isVisible = false
         binding.fullNameView.isVisible = true
+        binding.fullNameView.text = user
     }
 
     // alert dialog to display error or success message got from the response
@@ -107,5 +114,10 @@ class LoginFragment :
 
         val alert: AlertDialog = builder.create()
         alert.show()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(getString(R.string.username), username)
     }
 }
